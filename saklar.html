@@ -1,0 +1,87 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style media="screen">
+	html, p{
+padding: 10px;
+position: center;
+margin: auto;
+
+	
+	
+
+		font-size: 32px;
+		font-family: Algerian;
+		text-align: center;
+		color: white;
+	}
+	body{
+			background-image: url(ASUS.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	#kotak{
+		padding: 200px;
+
+
+	}
+	.tombol:hover {
+		background :black;
+	}
+	.button:hover {
+		background :black;
+	
+
+	</style>
+</head>
+	<body>
+		<table >
+		<div id = kotak>
+		<p>Tombol on / off</p>
+		
+<div class="button">
+		<button onclick="on()">ON</button>
+		
+</div>
+<p></p>
+<p></p>
+<div class="tombol">
+	<button onclick="off()">OFF</button>
+</div>
+</div>
+</table>
+		<script type="text/javascript">
+			function on() {
+				$.ajax({
+					url :'https://api.arkademy.com:8443/v0/arkana/device/IO/wipo/gpio/control',
+					type : 'POST',
+					headers : {
+						'accept' : 'application/json',
+						'content-type' : 'application/json',
+						'authorization' : 'Bearer Mzc4NjkzMzgwNC4wNjcwNzU6'
+					},
+					data : JSON.stringfy({
+						"controls" : {"5":1}
+					})
+				})
+			}
+
+		function off() {
+				$.ajax({
+					url :'https://api.arkademy.com:8443/v0/arkana/device/IO/wipo/gpio/control',
+					type : 'POST',
+					headers : {
+						'accept' : 'application/json',
+						'content-type' : 'application/json',
+						'authorization' : 'Bearer Mzc4NjkzMzgwNC4wNjcwNzU6'
+					},
+					data : JSON.stringfy({
+						"controls" : {"5":0}
+					})
+				})
+			}
+
+		</script>
+	</body>
+	</html>
